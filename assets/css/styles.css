@@ -1,0 +1,257 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/static/PlusJakartaSans-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/static/PlusJakartaSans-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* COLORS */
+  /* Primary */
+  --lime: hsl(61deg, 70%, 52%);
+  --red: hsl(4deg, 69%, 50%);
+  /* Neutral */
+  --white: hsl(0deg, 0%, 100%);
+  --slate100: hsl(202deg, 86%, 94%);
+  --slate300: hsl(203deg, 41%, 72%);
+  --slate500: hsl(200deg, 26%, 54%);
+  --slate700: hsl(200deg, 24%, 40%);
+  --slate900: hsl(202deg, 55%, 16%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 500;
+  color: var(--slate900);
+}
+
+/* ----- UTILITY ----- */
+.text-center {
+  text-align: center;
+}
+
+.container {
+  padding-block: 1.75rem;
+  padding-inline: 1.5rem;
+}
+/* ----- MORTAGE FORM ----- */
+.mortage-form {
+  background-color: var(--white);
+}
+
+.mortage-form__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-block-end: 1.5rem;
+}
+
+.mortage-form__title {
+  font-size: 1.75rem;
+}
+
+.mortage-form__clear {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--slate700);
+  height: fit-content;
+  color: var(--slate700);
+}
+
+.mortage-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block-end: 1.25rem;
+}
+
+.mortage-form__field-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.mortage-form__label {
+  color: var(--slate700);
+}
+
+.mortage-form__input {
+  width: 100%;
+  padding-block: 0.75rem;
+  padding-inline-start: 3.25rem;
+  font-weight: 700;
+  border: 1px solid var(--slate500);
+  color: var(--slate900);
+  border-radius: 6px;
+}
+
+:checked + .mortage-form__radio-label {
+  border-color: var(--lime);
+  background-color: color-mix(in srgb, var(--lime) 15%, transparent);
+}
+
+.mortage-form__radio {
+  display: none;
+}
+
+.mortage-form__radio-label {
+  display: inline-flex;
+  padding-block: 0.75rem;
+  padding-inline: 1.25rem;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 6px;
+  width: 100%;
+  font-weight: 700;
+  border: 1px solid var(--slate500);
+  color: var(--slate900);
+  gap: 1rem;
+  align-items: center;
+}
+
+.mortage-form__radio-label::before {
+  content: "";
+  display: block;
+  width: 0.6em;
+  height: 0.6em;
+  outline: 1.75px solid var(--slate500);
+  outline-offset: 0.2em;
+  border-radius: 50%;
+}
+
+:checked + .mortage-form__radio-label::before {
+  outline-color: var(--lime);
+  background-color: var(--lime);
+}
+
+.mortage-form__input:focus-visible {
+  outline: none;
+  border-color: var(--lime);
+}
+
+.mortage-form__input[data-orientation="no-space"] {
+  padding-inline: 1rem 4.75rem;
+}
+
+.mortage-form__badge {
+  position: absolute;
+  top: 2.25%;
+  right: 0.4%;
+  border-start-end-radius: 6px;
+  border-end-end-radius: 6px;
+  padding-inline: 0.75rem;
+  height: 95%;
+  display: grid;
+  place-content: center;
+  background-color: var(--slate100);
+  color: var(--slate700);
+  font-weight: 700;
+}
+
+.mortage-form__badge[data-orientation="start"] {
+  right: auto;
+  left: 0.4%;
+  border-start-start-radius: 5px;
+  border-end-start-radius: 5px;
+}
+
+.mortage-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mortage-form__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-block: 0.75rem;
+  padding-inline: 2.75rem;
+  width: 100%;
+  border-radius: 24px;
+  border: transparent;
+  background-color: var(--lime);
+  color: var(--slate900);
+  font-weight: 700;
+  font-size: 0.925rem;
+}
+
+/* ----- MORTAGE RESULTS ----- */
+.mortage-results__description[data-visible] {
+  display: flex;
+}
+
+.mortage-results {
+  background-color: var(--slate900);
+  color: var(--white);
+}
+
+.mortage-results__description {
+  display: none;
+  flex-direction: column;
+  place-items: center;
+}
+
+.mortage-results__image {
+  margin-block-end: 1.25rem;
+}
+
+.mortage-results__title {
+  margin-block-end: 1rem;
+}
+
+.mortage-results__text {
+  font-size: 0.875rem;
+  color: var(--slate300);
+  line-height: 1.5;
+}
+
+.mortage-results__results[data-visible] {
+  display: flex;
+}
+
+.mortage-results__results {
+  display: none;
+}
