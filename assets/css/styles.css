@@ -174,12 +174,13 @@ body {
 .mortgage-form__radio-label::before {
   content: "";
   display: block;
-  width: 1.2rem;
-  height: 1.2rem;
+  min-width: 1.25rem;
+  aspect-ratio: 1 / 1;
   padding: 0.18rem;
   border: 1px solid var(--slate500);
   border-radius: 50%;
   overflow: visible;
+  flex-shrink: 0;
 }
 
 :checked + .mortgage-form__radio-label::before {
