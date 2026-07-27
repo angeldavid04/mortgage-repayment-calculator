@@ -159,16 +159,18 @@ body {
 .mortage-form__radio-label::before {
   content: "";
   display: block;
-  width: 0.6em;
-  height: 0.6em;
-  outline: 1.75px solid var(--slate500);
-  outline-offset: 0.2em;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.18rem;
+  border: 1px solid var(--slate500);
   border-radius: 50%;
+  overflow: visible;
 }
 
 :checked + .mortage-form__radio-label::before {
-  outline-color: var(--lime);
-  background-color: var(--lime);
+  border-color: var(--lime);
+  background-image: linear-gradient(var(--lime), var(--lime));
+  background-clip: content-box;
 }
 
 .mortage-form__input:focus-visible {
