@@ -46,12 +46,6 @@ button {
   cursor: pointer;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -109,20 +103,32 @@ body {
   position: relative;
   max-width: 100%;
   overflow: hidden;
+  border: 1px solid var(--slate500);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .mortage-form__label {
   color: var(--slate700);
+  width: fit-content;
 }
 
 .mortage-form__input {
+  display: inline-flex;
   width: 100%;
   padding-block: 0.75rem;
   padding-inline-start: 3.25rem;
   font-weight: 700;
-  border: 1px solid var(--slate500);
+  border: none;
   color: var(--slate900);
-  border-radius: 6px;
+}
+
+.mortage-form__input::before {
+  content: "";
+  display: block;
+  background-color: red;
+  width: 5rem;
+  height: 5rem;
 }
 
 :checked + .mortage-form__radio-label {
@@ -176,12 +182,10 @@ body {
 
 .mortage-form__badge {
   position: absolute;
-  top: 2.25%;
-  right: 0.4%;
-  border-start-end-radius: 6px;
-  border-end-end-radius: 6px;
-  padding-inline: 0.75rem;
-  height: 95%;
+  top: 0;
+  right: 0;
+  padding-inline: 0.85rem;
+  height: 100%;
   display: grid;
   place-content: center;
   background-color: var(--slate100);
@@ -189,11 +193,14 @@ body {
   font-weight: 700;
 }
 
+.mortage-form__input:focus + .mortage-form__badge {
+  background-color: var(--lime);
+  color: var(--slate900);
+}
+
 .mortage-form__badge[data-orientation="start"] {
   right: auto;
-  left: 0.4%;
-  border-start-start-radius: 5px;
-  border-end-start-radius: 5px;
+  left: 0;
 }
 
 .mortage-form__group {
