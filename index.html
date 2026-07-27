@@ -15,64 +15,65 @@
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
 </head>
 <body>
-  <div class="card">
-    <form class="mortage-form container">
-      <header class="mortage-form__header">
-        <h1 class="mortage-form__title">Mortgage Calculator</h1>
-        <button type="reset" class="mortage-form__clear">Clear All</button>
+  <main class="card">
+    <form class="mortgage-form container">
+      <header class="mortgage-form__header" data-area="header">
+        <h1 class="mortgage-form__title">Mortgage Calculator</h1>
+        <button type="reset" class="mortgage-form__clear">Clear All</button>
       </header>
-      <div class="mortage-form__field">
-        <label for="amount" class="mortage-form__label">Mortgage Amount</label>
-        <div class="mortage-form__field-container">
-          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="amount" id="amount" class="mortage-form__input"
+      <div class="mortgage-form__field" data-area="amount">
+        <label for="amount" class="mortgage-form__label">Mortgage Amount</label>
+        <div class="mortgage-form__field-container">
+          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="amount" id="amount" class="mortgage-form__input"
             data-orientation="start">
-          <span class="mortage-form__badge" data-orientation="start">&pound;</span>
+          <span class="mortgage-form__badge" data-orientation="start">&pound;</span>
         </div>
       </div>
-      <div class="mortage-form__field">
-        <label for="term" class="mortage-form__label">Mortgage Term</label>
-        <div class="mortage-form__field-container">
-          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="term" id="term" class="mortage-form__input"
+      <div class="mortgage-form__field" data-area="term">
+        <label for="term" class="mortgage-form__label">Mortgage Term</label>
+        <div class="mortgage-form__field-container">
+          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="term" id="term" class="mortgage-form__input"
             data-orientation="no-space">
-          <span class="mortage-form__badge">years</span>
+          <span class="mortgage-form__badge">years</span>
         </div>
       </div>
-      <div class="mortage-form__field">
-        <label for="interest-rate" class="mortage-form__label">Interest Rate</label>
-        <div class="mortage-form__field-container">
+      <div class="mortgage-form__field" data-area="rate">
+        <label for="interest-rate" class="mortgage-form__label">Interest Rate</label>
+        <div class="mortgage-form__field-container">
           <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="interest-rate" id="interest Rate"
-            class="mortage-form__input" data-orientation="no-space">
-          <span class="mortage-form__badge">&percnt;</span>
+            class="mortgage-form__input" data-orientation="no-space">
+          <span class="mortgage-form__badge">&percnt;</span>
         </div>
       </div>
-      <div class="mortage-form__field">
-        <label for="type-repayment" class="mortage-form__label">Mortgage Type</label>
-        <div class="mortage-form__group">
-          <input type="radio" name="type" id="type-repayment" class="mortage-form__radio">
-          <label for="type-repayment" class="mortage-form__radio-label">Repayment</label>
-          <input type="radio" name="type" id="type-interest" class="mortage-form__radio">
-          <label for="type-interest" class="mortage-form__radio-label">Interest Only</label>
+      <div class="mortgage-form__field" data-area="type">
+        <label for="type-repayment" class="mortgage-form__label">Mortgage Type</label>
+        <div class="mortgage-form__group">
+          <input type="radio" name="type" id="type-repayment" class="mortgage-form__radio">
+          <label for="type-repayment" class="mortgage-form__radio-label">Repayment</label>
+          <input type="radio" name="type" id="type-interest" class="mortgage-form__radio">
+          <label for="type-interest" class="mortgage-form__radio-label">Interest Only</label>
         </div>
       </div>
-      <button type="submit" class="mortage-form__submit"><img src="assets/images/icon-calculator.svg" alt=""> Calculate
+      <button type="submit" class="mortgage-form__submit" data-area="submit"><img
+          src="assets/images/icon-calculator.svg" alt=""> Calculate
         Repayments</button>
     </form>
-    <div class="mortage-results container">
-      <div class="mortage-results__description" data-visible>
-        <img src="assets/images/illustration-empty.svg" alt="" class="mortage-results__image">
-        <h2 class="mortage-results__title">Results shown here</h2>
-        <p class="mortage-results__text text-center">
+    <div class="mortgage-results container">
+      <div class="mortgage-results__description" data-visible>
+        <img src="assets/images/illustration-empty.svg" alt="" class="mortgage-results__image">
+        <h2 class="mortgage-results__title">Results shown here</h2>
+        <p class="mortgage-results__text text-center">
           Complete the form and click “calculate repayments” to see what
           your monthly repayments would be.
         </p>
       </div>
-      <div class="mortage-results__results">
-        <h2 class="mortage-results__title">Your results</h2>
-        <p class="mortage-results__text">
+      <div class="mortgage-results__results">
+        <h2 class="mortgage-results__title">Your results</h2>
+        <p class="mortgage-results__text">
           Your results are shown below based on the information you provided.
           To adjust the results, edit the form and click “calculate repayments” again.
         </p>
-        <div class="mortage-results__box">
+        <div class="mortgage-results__box">
           <h3>Your monthly repayments</h3>
           <p id="monthly-repayments"></p>
           <hr>
@@ -81,6 +82,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </body>
 </html>

@@ -56,6 +56,9 @@ body {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
   color: var(--slate900);
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
 }
 
 /* ----- UTILITY ----- */
@@ -67,24 +70,32 @@ body {
   padding-block: 1.75rem;
   padding-inline: 1.5rem;
 }
-/* ----- MORTAGE FORM ----- */
-.mortage-form {
-  background-color: var(--white);
+
+.card {
+  display: flex;
+  flex-direction: column;
 }
 
-.mortage-form__header {
+/* ----- mortgage FORM ----- */
+.mortgage-form {
+  background-color: var(--white);
+  display: grid;
+}
+
+.mortgage-form__header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   margin-block-end: 1.5rem;
 }
 
-.mortage-form__title {
+.mortgage-form__title {
   font-size: 1.75rem;
 }
 
-.mortage-form__clear {
+.mortgage-form__clear {
   background-color: transparent;
   border: none;
   border-bottom: 1px solid var(--slate700);
@@ -92,14 +103,14 @@ body {
   color: var(--slate700);
 }
 
-.mortage-form__field {
+.mortgage-form__field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-block-end: 1.25rem;
 }
 
-.mortage-form__field-container {
+.mortgage-form__field-container {
   position: relative;
   max-width: 100%;
   overflow: hidden;
@@ -108,12 +119,16 @@ body {
   overflow: hidden;
 }
 
-.mortage-form__label {
+.mortgage-form__field-container:focus-within {
+  border-color: var(--lime);
+}
+
+.mortgage-form__label {
   color: var(--slate700);
   width: fit-content;
 }
 
-.mortage-form__input {
+.mortgage-form__input {
   display: inline-flex;
   width: 100%;
   padding-block: 0.75rem;
@@ -123,7 +138,7 @@ body {
   color: var(--slate900);
 }
 
-.mortage-form__input::before {
+.mortgage-form__input::before {
   content: "";
   display: block;
   background-color: red;
@@ -131,16 +146,16 @@ body {
   height: 5rem;
 }
 
-:checked + .mortage-form__radio-label {
+:checked + .mortgage-form__radio-label {
   border-color: var(--lime);
   background-color: color-mix(in srgb, var(--lime) 15%, transparent);
 }
 
-.mortage-form__radio {
+.mortgage-form__radio {
   display: none;
 }
 
-.mortage-form__radio-label {
+.mortgage-form__radio-label {
   display: inline-flex;
   padding-block: 0.75rem;
   padding-inline: 1.25rem;
@@ -156,7 +171,7 @@ body {
   align-items: center;
 }
 
-.mortage-form__radio-label::before {
+.mortgage-form__radio-label::before {
   content: "";
   display: block;
   width: 1.2rem;
@@ -167,22 +182,22 @@ body {
   overflow: visible;
 }
 
-:checked + .mortage-form__radio-label::before {
+:checked + .mortgage-form__radio-label::before {
   border-color: var(--lime);
   background-image: linear-gradient(var(--lime), var(--lime));
   background-clip: content-box;
 }
 
-.mortage-form__input:focus-visible {
+.mortgage-form__input:focus-visible {
   outline: none;
   border-color: var(--lime);
 }
 
-.mortage-form__input[data-orientation="no-space"] {
+.mortgage-form__input[data-orientation="no-space"] {
   padding-inline: 1rem 4.75rem;
 }
 
-.mortage-form__badge {
+.mortgage-form__badge {
   position: absolute;
   top: 0;
   right: 0;
@@ -195,23 +210,23 @@ body {
   font-weight: 700;
 }
 
-.mortage-form__input:focus + .mortage-form__badge {
+.mortgage-form__input:focus + .mortgage-form__badge {
   background-color: var(--lime);
   color: var(--slate900);
 }
 
-.mortage-form__badge[data-orientation="start"] {
+.mortgage-form__badge[data-orientation="start"] {
   right: auto;
   left: 0;
 }
 
-.mortage-form__group {
+.mortgage-form__group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.mortage-form__submit {
+.mortgage-form__submit {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -227,40 +242,118 @@ body {
   font-size: 0.925rem;
 }
 
-/* ----- MORTAGE RESULTS ----- */
-.mortage-results__description[data-visible] {
+/* ----- mortgage RESULTS ----- */
+.mortgage-results__description[data-visible] {
   display: flex;
 }
 
-.mortage-results {
+.mortgage-results {
   background-color: var(--slate900);
   color: var(--white);
 }
 
-.mortage-results__description {
+.mortgage-results__description {
   display: none;
   flex-direction: column;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
 }
 
-.mortage-results__image {
+.mortgage-results__image {
   margin-block-end: 1.25rem;
 }
 
-.mortage-results__title {
+.mortgage-results__title {
   margin-block-end: 1rem;
 }
 
-.mortage-results__text {
+.mortgage-results__text {
   font-size: 0.875rem;
   color: var(--slate300);
   line-height: 1.5;
 }
 
-.mortage-results__results[data-visible] {
+.mortgage-results__results[data-visible] {
   display: flex;
 }
 
-.mortage-results__results {
+.mortgage-results__results {
   display: none;
+  min-height: 100%;
+}
+
+@media screen and (min-width: 64rem) {
+  body {
+    background-color: var(--slate100);
+  }
+
+  /* ----- UTILITIES ------ */
+  .card {
+    max-width: 62rem;
+    flex-direction: row;
+    box-shadow: color-mix(in srgb, var(--slate900) 20%, transparent) 0px 0px
+      12px 3px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: var(--white);
+  }
+
+  .container {
+    min-width: 50%;
+    padding-block: 2.25rem;
+    padding-inline: 2.25rem;
+  }
+
+  /* ----- GRID AREAS ------ */
+  [data-area="header"] {
+    grid-area: header;
+  }
+
+  [data-area="amount"] {
+    grid-area: amount;
+  }
+
+  [data-area="term"] {
+    grid-area: term;
+  }
+
+  [data-area="rate"] {
+    grid-area: rate;
+  }
+
+  [data-area="type"] {
+    grid-area: type;
+  }
+
+  [data-area="submit"] {
+    grid-area: submit;
+  }
+
+  /* ----- MORTGAGE FORM ------ */
+  .mortgage-form {
+    grid-template-areas:
+      "header header"
+      "amount amount"
+      "term rate"
+      "type type"
+      "submit submit";
+
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.25rem;
+  }
+
+  .mortgage-form__header {
+    margin-block-end: 2rem;
+  }
+
+  .mortgage-form__submit {
+    margin-block-start: 1rem;
+    max-width: 70%;
+  }
+
+  /* ----- MORTGAGE RESULTS ------ */
+  .mortgage-results {
+    border-end-start-radius: 64px;
+  }
 }
