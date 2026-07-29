@@ -57,6 +57,7 @@ const $form = document.getElementById("form");
 $form.addEventListener("submit", handleSubmit);
 $form.addEventListener("input", (e) => {
   if (e.target.value.trim() !== "") {
-    clearValidation(e.target.closest(".mortgage-form__field"));
+    const $field = e.target.closest(".mortgage-form__field");
+    clearValidation($field);
   }
 });
