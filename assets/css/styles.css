@@ -284,7 +284,7 @@ body {
   min-height: 100%;
 }
 
-@media screen and (min-width: 74rem) {
+@media screen and (min-width: 68rem) {
   body {
     background-color: var(--slate100);
     place-content: center;
