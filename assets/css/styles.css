@@ -104,13 +104,18 @@ body {
   border-bottom: 1px solid var(--slate700);
   height: fit-content;
   color: var(--slate700);
+  transition: color 0.3s ease-in-out;
+}
+
+.mortgage-form__clear:hover {
+  color: var(--slate900);
 }
 
 .mortgage-form__field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-block-end: 1.25rem;
+  margin-block-end: 1rem;
 }
 
 .mortgage-form__field-container {
@@ -121,6 +126,10 @@ body {
   border-radius: 6px;
   overflow: hidden;
   transition: border-color 0.3s ease-in-out;
+}
+
+.mortgage-form__field-container:hover {
+  border-color: var(--slate900);
 }
 
 .mortgage-form__field-container:focus-within {
@@ -189,6 +198,10 @@ body {
   background-clip: content-box;
 }
 
+.mortgage-form__radio-label:hover {
+  border-color: var(--lime);
+}
+
 .mortgage-form__input:focus-visible {
   outline: none;
   border-color: var(--lime);
@@ -244,10 +257,18 @@ body {
   color: var(--slate900);
   font-weight: 700;
   font-size: 0.925rem;
+  transition:
+    color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
 .mortgage-form__submit:focus-visible {
   outline-color: var(--slate700);
+}
+
+.mortgage-form__submit:hover {
+  color: color-mix(in srgb, var(--slate900) 92%, transparent);
+  background-color: color-mix(in srgb, var(--lime) 50%, transparent);
 }
 
 /* Form validations */
@@ -377,7 +398,7 @@ body {
   }
 
   .mortgage-form__submit {
-    margin-block-start: 1rem;
+    margin-block-start: 0.5rem;
     max-width: 70%;
   }
 
