@@ -281,7 +281,8 @@ body {
 }
 
 .mortgage-form__field-container:has([data-invalid])
-  + .mortgage-form__validation {
+  + .mortgage-form__validation,
+.mortgage-form__group:has([data-invalid]) + .mortgage-form__validation {
   color: var(--red);
 }
 
