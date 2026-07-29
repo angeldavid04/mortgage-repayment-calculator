@@ -25,33 +25,41 @@
         <label for="amount" class="mortgage-form__label">Mortgage Amount</label>
         <div class="mortgage-form__field-container">
           <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="amount" id="amount" class="mortgage-form__input"
-            data-orientation="start">
+            data-orientation="start" required>
           <span class="mortgage-form__badge" data-orientation="start">&pound;</span>
         </div>
+        <span class="mortgage-form__validation" aria-live="assertive"></span> <!-- This field is required -->
       </div>
       <div class="mortgage-form__field" data-area="term">
         <label for="term" class="mortgage-form__label">Mortgage Term</label>
         <div class="mortgage-form__field-container">
           <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="term" id="term" class="mortgage-form__input"
-            data-orientation="no-space">
+            data-orientation="no-space" required>
           <span class="mortgage-form__badge">years</span>
         </div>
+        <span class="mortgage-form__validation" aria-live="assertive"></span>
       </div>
       <div class="mortgage-form__field" data-area="rate">
         <label for="interest-rate" class="mortgage-form__label">Interest Rate</label>
         <div class="mortgage-form__field-container">
-          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="interest-rate" id="interest Rate"
-            class="mortgage-form__input" data-orientation="no-space">
+          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="interest-rate" id="interest-rate"
+            class="mortgage-form__input" data-orientation="no-space" required>
           <span class="mortgage-form__badge">&percnt;</span>
         </div>
+        <span class="mortgage-form__validation" aria-live="assertive"></span>
       </div>
       <div class="mortgage-form__field" data-area="type">
         <label for="type-repayment" class="mortgage-form__label">Mortgage Type</label>
         <div class="mortgage-form__group">
           <input type="radio" name="type" id="type-repayment" class="mortgage-form__radio">
-          <label for="type-repayment" class="mortgage-form__radio-label">Repayment</label>
+          <label for="type-repayment" class="mortgage-form__radio-label" tabindex="0" role="radio"
+            aria-checked="false">Repayment</label>
+
           <input type="radio" name="type" id="type-interest" class="mortgage-form__radio">
-          <label for="type-interest" class="mortgage-form__radio-label">Interest Only</label>
+          <label for="type-interest" class="mortgage-form__radio-label" tabindex="0" role="radio"
+            aria-checked="false">Interest Only</label>
+
+          <span class="mortgage-form__validation" aria-live="assertive"></span>
         </div>
       </div>
       <button type="submit" class="mortgage-form__submit" data-area="submit"><img

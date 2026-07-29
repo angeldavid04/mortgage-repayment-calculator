@@ -60,6 +60,10 @@ body {
   min-height: 100vh;
 }
 
+:focus-visible {
+  outline-color: var(--lime);
+}
+
 /* ----- UTILITY ----- */
 .text-center {
   text-align: center;
@@ -240,6 +244,29 @@ body {
   color: var(--slate900);
   font-weight: 700;
   font-size: 0.925rem;
+}
+
+.mortgage-form__submit:focus-visible {
+  outline-color: var(--slate700);
+}
+
+/* Form validations */
+.mortgage-form__validation {
+  font-size: 0.925rem;
+}
+
+.mortgage-form__field-container:has([data-invalid]) {
+  border-color: var(--red);
+}
+
+.mortgage-form__field-container:has([data-invalid])
+  + .mortgage-form__validation {
+  color: var(--red);
+}
+
+.mortgage-form__input[data-invalid] + .mortgage-form__badge {
+  background-color: var(--red);
+  color: var(--white);
 }
 
 /* ----- mortgage RESULTS ----- */
