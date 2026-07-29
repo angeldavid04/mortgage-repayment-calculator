@@ -57,7 +57,6 @@ body {
   font-weight: 500;
   color: var(--slate900);
   display: grid;
-  place-content: center;
   min-height: 100vh;
 }
 
@@ -251,6 +250,7 @@ body {
 .mortgage-results {
   background-color: var(--slate900);
   color: var(--white);
+  flex: 1;
 }
 
 .mortgage-results__description {
@@ -284,9 +284,10 @@ body {
   min-height: 100%;
 }
 
-@media screen and (min-width: 64rem) {
+@media screen and (min-width: 74rem) {
   body {
     background-color: var(--slate100);
+    place-content: center;
   }
 
   /* ----- UTILITIES ------ */
