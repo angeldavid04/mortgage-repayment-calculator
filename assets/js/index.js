@@ -23,9 +23,36 @@ function showValidation($field) {
   $message.textContent = "This field is required";
 }
 
+function repayment(amount, term, rate) {
+  const payment = { monthly: 0, total: 0 };
+  const monthlyInterest = rate / 100 / 12;
+  const payNum = term * 12;
+
+  if (monthlyInterest === 0) {
+    return {
+      monthly: (amount / payNum).toFixed(2),
+      total: amount
+    };
+  }
+
+  const factor = Math.pow(1 + monthlyInterest, payNum);
+  const monthly = (amount * (monthlyInterest * factor)) / (factor - 1);
+
+  const total = monthly * payNum;
+
+  // The value is rounded at the end to avoid inconsistencies in the total
+  return {
+    monthly: monthly.toFixed(2),
+    total: total.toFixed(2)
+  };
+}
+
 function handleSubmit(e) {
   e.preventDefault();
 
+  let hasError = false;
+
+  // Validations
   e.target.querySelectorAll(".mortgage-form__field").forEach(($field) => {
     const $input = $field.querySelector("input");
     const $message = $field.querySelector(".mortgage-form__validation");
@@ -37,6 +64,7 @@ function handleSubmit(e) {
         clearValidation($field);
       } else {
         showValidation($field);
+        hasError = true;
       }
     }
 
@@ -47,9 +75,17 @@ function handleSubmit(e) {
         clearValidation($field);
       } else {
         showValidation($field);
+        hasError = true;
       }
     }
   });
+
+  if (hasError) return;
+
+  // Calculations
+  const data = Object.fromEntries(new FormData(e.target));
+  console.log(data);
+  console.log(repayment(data.amount, data.term, data.rate));
 }
 
 const $form = document.getElementById("form");

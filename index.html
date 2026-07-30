@@ -40,10 +40,10 @@
         <span class="mortgage-form__validation" aria-live="assertive"></span>
       </div>
       <div class="mortgage-form__field" data-area="rate">
-        <label for="interest-rate" class="mortgage-form__label">Interest Rate</label>
+        <label for="rate" class="mortgage-form__label">Interest Rate</label>
         <div class="mortgage-form__field-container">
-          <input type="text" pattern="^[0-9]+([.,][0-9]+)?$" name="interest-rate" id="interest-rate"
-            class="mortgage-form__input" data-orientation="no-space" required>
+          <input type="text" pattern="^[0-9]+([.,][0-9]+)?$" name="rate" id="rate" class="mortgage-form__input"
+            data-orientation="no-space" required>
           <span class="mortgage-form__badge">&percnt;</span>
         </div>
         <span class="mortgage-form__validation" aria-live="assertive"></span>
@@ -51,11 +51,11 @@
       <div class="mortgage-form__field" data-area="type">
         <label for="type-repayment" class="mortgage-form__label">Mortgage Type</label>
         <div class="mortgage-form__group">
-          <input type="radio" name="type" id="type-repayment" class="mortgage-form__radio">
+          <input type="radio" name="type" value="repayment" id="type-repayment" class="mortgage-form__radio">
           <label for="type-repayment" class="mortgage-form__radio-label" tabindex="0" role="radio"
             aria-checked="false">Repayment</label>
 
-          <input type="radio" name="type" id="type-interest" class="mortgage-form__radio">
+          <input type="radio" name="type" value="interest" id="type-interest" class="mortgage-form__radio">
           <label for="type-interest" class="mortgage-form__radio-label" tabindex="0" role="radio"
             aria-checked="false">Interest Only</label>
         </div>
