@@ -47,8 +47,8 @@ function repayment(amount, term, rate) {
 
   // The value is rounded at the end to avoid inconsistencies in the total
   return {
-    monthly: monthly.toFixed(2),
-    total: total.toFixed(2)
+    monthly: Number(monthly.toFixed(2)),
+    total: Number(total.toFixed(2))
   };
 }
 
@@ -91,27 +91,42 @@ function handleSubmit(e) {
 
   // Calculations
   const data = Object.fromEntries(new FormData(e.target));
+  let result;
 
-  if ((data.type = TYPES.repayment)) {
-    console.log(
-      repayment(
-        parseNumber(data.amount),
-        parseNumber(data.term),
-        parseNumber(data.rate)
-      )
+  if (data.type === TYPES.repayment) {
+    result = repayment(
+      parseNumber(data.amount),
+      parseNumber(data.term),
+      parseNumber(data.rate)
     );
+
+    console.log(result);
   } else {
     console.log("Interest Only");
   }
+
+  $monthly.textContent = POUND_FORMAT.format(result.monthly);
+  $total.textContent = POUND_FORMAT.format(result.total);
+
+  $description.removeAttribute("data-visible");
+  $results.setAttribute("data-visible", "");
 }
 
 const FLOAT_REGEX = /^[0-9]+(,[0-9]+)*(\.[0-9]+)?$/;
 const NUMBER_FORMAT = new Intl.NumberFormat("en-US");
+const POUND_FORMAT = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "GBP"
+});
 const TYPES = Object.freeze({
   repayment: "repayment",
   interest: "interest"
 });
 const $form = document.getElementById("form");
+const $description = document.querySelector(".mortgage-results__description");
+const $results = document.querySelector(".mortgage-results__results");
+const $monthly = document.getElementById("monthly-repayments");
+const $total = document.getElementById("total-repay");
 
 $form.addEventListener("submit", handleSubmit);
 $form.addEventListener("input", (e) => {
@@ -120,7 +135,6 @@ $form.addEventListener("input", (e) => {
     clearValidation($field);
   }
 });
-
 $form.addEventListener("input", (e) => {
   if (e.target.matches('input[type="text"]')) {
     // Quita espacios en blanco
@@ -171,5 +185,11 @@ $form.addEventListener("input", (e) => {
     // Formatea la entrada en tiempo de escritura
     const value = e.target.value;
     e.target.value = NUMBER_FORMAT.format(parseNumber(value));
+  }
+});
+$form.addEventListener("click", (e) => {
+  if (e.target.matches("#clear")) {
+    $description.setAttribute("data-visible", "");
+    $results.removeAttribute("data-visible");
   }
 });

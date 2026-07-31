@@ -19,7 +19,7 @@
     <form id="form" class="mortgage-form container" novalidate>
       <header class="mortgage-form__header" data-area="header">
         <h1 class="mortgage-form__title">Mortgage Calculator</h1>
-        <button type="reset" class="mortgage-form__clear">Clear All</button>
+        <button type="reset" class="mortgage-form__clear" id="clear">Clear All</button>
       </header>
       <div class="mortgage-form__field" data-area="amount">
         <label for="amount" class="mortgage-form__label">Mortgage Amount</label>
@@ -66,7 +66,7 @@
         Repayments</button>
     </form>
     <div class="mortgage-results container">
-      <div class="mortgage-results__description">
+      <div class="mortgage-results__description text-center" data-visible>
         <img src="assets/images/illustration-empty.svg" alt="" class="mortgage-results__image">
         <h2 class="mortgage-results__title">Results shown here</h2>
         <p class="mortgage-results__text text-center">
@@ -74,7 +74,7 @@
           your monthly repayments would be.
         </p>
       </div>
-      <div class="mortgage-results__results" data-visible>
+      <div class="mortgage-results__results">
         <h2 class="mortgage-results__title">Your results</h2>
         <p class="mortgage-results__text">
           Your results are shown below based on the information you provided.
