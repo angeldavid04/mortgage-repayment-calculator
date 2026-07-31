@@ -1,10 +1,14 @@
+// Parse & validations
 function validateNumber(value) {
-  const regex = /^[0-9]+([.,][0-9]+)?$/;
-  return regex.test(value);
+  return FLOAT_REGEX.test(value);
 }
 
 function validateRadio($field) {
   return $field.matches(":has(input:checked)");
+}
+
+function parseNumber(string) {
+  return Number(string.replaceAll(",", "").trim());
 }
 
 function clearValidation($field) {
@@ -23,6 +27,7 @@ function showValidation($field) {
   $message.textContent = "This field is required";
 }
 
+// Calculations
 function repayment(amount, term, rate) {
   const payment = { monthly: 0, total: 0 };
   const monthlyInterest = rate / 100 / 12;
@@ -47,6 +52,7 @@ function repayment(amount, term, rate) {
   };
 }
 
+// Event handlers
 function handleSubmit(e) {
   e.preventDefault();
 
@@ -58,7 +64,8 @@ function handleSubmit(e) {
     const $message = $field.querySelector(".mortgage-form__validation");
 
     if ($input.getAttribute("type") === "text") {
-      const isValid = validateNumber($input.value);
+      const value = $input.value;
+      const isValid = validateNumber(value);
 
       if (isValid) {
         clearValidation($field);
@@ -84,10 +91,26 @@ function handleSubmit(e) {
 
   // Calculations
   const data = Object.fromEntries(new FormData(e.target));
-  console.log(data);
-  console.log(repayment(data.amount, data.term, data.rate));
+
+  if ((data.type = TYPES.repayment)) {
+    console.log(
+      repayment(
+        parseNumber(data.amount),
+        parseNumber(data.term),
+        parseNumber(data.rate)
+      )
+    );
+  } else {
+    console.log("Interest Only");
+  }
 }
 
+const FLOAT_REGEX = /^[0-9]+(,[0-9]+)*(\.[0-9]+)?$/;
+const NUMBER_FORMAT = new Intl.NumberFormat("en-US");
+const TYPES = Object.freeze({
+  repayment: "repayment",
+  interest: "interest"
+});
 const $form = document.getElementById("form");
 
 $form.addEventListener("submit", handleSubmit);
@@ -95,5 +118,58 @@ $form.addEventListener("input", (e) => {
   if (e.target.value.trim() !== "") {
     const $field = e.target.closest(".mortgage-form__field");
     clearValidation($field);
+  }
+});
+
+$form.addEventListener("input", (e) => {
+  if (e.target.matches('input[type="text"]')) {
+    // Quita espacios en blanco
+    if (e.data === " ") {
+      e.target.value = e.target.value.trim();
+      return;
+    }
+
+    // Asegura que no tenga más de un punto
+    const start = e.target.selectionStart;
+    const regexDot = /^[^\.]*\.[^\.]*\.[^\.]*$/;
+
+    if (e.data === "." && regexDot.test(e.target.value)) {
+      e.target.value =
+        e.target.value.slice(0, start - 1) +
+        e.target.value.slice(start, e.target.value.length);
+      e.target.setSelectionRange(start - 1, start - 1);
+      return;
+    }
+
+    // Si ingresa el primer punto, no se hace nada
+    if (e.data === ".") {
+      return;
+    }
+
+    // Elimina las letras y otros caracteres en cuanto se ingresan
+    if (!FLOAT_REGEX.test(e.target.value)) {
+      e.target.value =
+        e.target.value.slice(0, start - 1) +
+        e.target.value.slice(start, e.target.value.length);
+      e.target.setSelectionRange(start - 1, start - 1);
+      return;
+    }
+
+    // Formatea al eliminar
+    if (
+      (e.inputType === "deleteContentBackward" ||
+        e.inputType === "deleteContentForward") &&
+      e.target.value.length >= 1
+    ) {
+      const value = e.target.value;
+
+      e.target.value = NUMBER_FORMAT.format(parseNumber(value));
+      e.target.setSelectionRange(start, start);
+      return;
+    }
+
+    // Formatea la entrada en tiempo de escritura
+    const value = e.target.value;
+    e.target.value = NUMBER_FORMAT.format(parseNumber(value));
   }
 });

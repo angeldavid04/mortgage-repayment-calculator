@@ -66,7 +66,7 @@
         Repayments</button>
     </form>
     <div class="mortgage-results container">
-      <div class="mortgage-results__description" data-visible>
+      <div class="mortgage-results__description">
         <img src="assets/images/illustration-empty.svg" alt="" class="mortgage-results__image">
         <h2 class="mortgage-results__title">Results shown here</h2>
         <p class="mortgage-results__text text-center">
@@ -74,18 +74,18 @@
           your monthly repayments would be.
         </p>
       </div>
-      <div class="mortgage-results__results">
+      <div class="mortgage-results__results" data-visible>
         <h2 class="mortgage-results__title">Your results</h2>
         <p class="mortgage-results__text">
           Your results are shown below based on the information you provided.
           To adjust the results, edit the form and click “calculate repayments” again.
         </p>
         <div class="mortgage-results__box">
-          <h3>Your monthly repayments</h3>
-          <p id="monthly-repayments"></p>
-          <hr>
-          <h3>Total you'll repay over the term</h3>
-          <p id="total-repay"></p>
+          <h3 class="mortgage-results__text">Your monthly repayments</h3>
+          <p id="monthly-repayments" class="mortgage-results__monthly">&pound;1,797.74</p>
+          <hr class="mortage-results__line">
+          <h3 class="mortgage-results__text">Total you'll repay over the term</h3>
+          <p id="total-repay" class="mortgage-results__total">&pound;539,322.94</p>
         </div>
       </div>
     </div>
