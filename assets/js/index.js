@@ -160,6 +160,7 @@ const $description = document.querySelector(".mortgage-results__description");
 const $results = document.querySelector(".mortgage-results__results");
 const $monthly = document.getElementById("monthly-repayments");
 const $total = document.getElementById("total-repay");
+const $radioContainer = document.querySelector(".mortgage-form__group");
 
 $form.addEventListener("submit", handleSubmit);
 $form.addEventListener("input", (e) => {
@@ -216,5 +217,47 @@ $form.addEventListener("input", (e) => {
 $form.addEventListener("click", (e) => {
   if (e.target.matches("#clear")) {
     showIndication();
+  }
+});
+$radioContainer.addEventListener("keydown", (e) => {
+  if (e.code === "Tab") return;
+
+  const $group = e.target.closest('[data-grouped-by="type"]');
+  if (!$group) return;
+
+  if (e.code === "ArrowUp" || e.code === "ArrowDown") {
+    e.preventDefault();
+    const $previous = $group.previousElementSibling;
+    const $next = $group.nextElementSibling;
+
+    if ($next) {
+      $next.querySelector("label").focus();
+    } else {
+      $previous.querySelector("label").focus();
+    }
+
+    return;
+  }
+
+  if (e.code === "Space" || e.code === "Enter") {
+    e.preventDefault();
+
+    // Deselect all inputs except the one that was pressed
+    $radioContainer
+      .querySelectorAll('[data-grouped-by="type"]')
+      .forEach(($g) => {
+        const $radio = $g.querySelector("input");
+        const $label = $g.querySelector("label");
+
+        if ($g === $group) {
+          $radio.checked = true;
+          $label.setAttribute("aria-checked", "true");
+        } else {
+          $radio.checked = false;
+          $label.setAttribute("aria-checked", "false");
+        }
+      });
+
+    //
   }
 });
