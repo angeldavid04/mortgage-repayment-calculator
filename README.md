@@ -1,4 +1,4 @@
-# 💷 Frontend Mentor - Solución del reto Newsletter sign up form with success message
+# 💷 Frontend Mentor - Solución del reto Mortgage repayment calculator
 
 Esta es mi solución al reto [Mortgage repayment calculator](https://www.frontendmentor.io/challenges/mortgage-repayment-calculator-Galx1LXK73).
 
