@@ -20,7 +20,7 @@
       <div class="mortgage-form__field" data-area="amount">
         <label for="amount" class="mortgage-form__label">Mortgage Amount</label>
         <div class="mortgage-form__field-container">
-          <input type="text" pattern="[0-9]+([.,][0-9]+)?" name="amount" id="amount" class="mortgage-form__input"
+          <input type="text" inputmode="decimal" name="amount" id="amount" class="mortgage-form__input"
             data-orientation="start" required>
           <span class="mortgage-form__badge" data-orientation="start">&pound;</span>
         </div>
@@ -29,7 +29,7 @@
       <div class="mortgage-form__field" data-area="term">
         <label for="term" class="mortgage-form__label">Mortgage Term</label>
         <div class="mortgage-form__field-container">
-          <input type="text" pattern="^[0-9]+([.,][0-9]+)?$" name="term" id="term" class="mortgage-form__input"
+          <input type="text" inputmode="decimal" name="term" id="term" class="mortgage-form__input"
             data-orientation="no-space" required>
           <span class="mortgage-form__badge">years</span>
         </div>
@@ -38,7 +38,7 @@
       <div class="mortgage-form__field" data-area="rate">
         <label for="rate" class="mortgage-form__label">Interest Rate</label>
         <div class="mortgage-form__field-container">
-          <input type="text" pattern="^[0-9]+([.,][0-9]+)?$" name="rate" id="rate" class="mortgage-form__input"
+          <input type="text" inputmode="decimal" name="rate" id="rate" class="mortgage-form__input"
             data-orientation="no-space" required>
           <span class="mortgage-form__badge">&percnt;</span>
         </div>
