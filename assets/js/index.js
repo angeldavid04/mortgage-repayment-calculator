@@ -179,7 +179,7 @@ $form.addEventListener("input", (e) => {
 
     // Ensure it has no more than one point.
     const start = e.target.selectionStart;
-    const regexDot = /^[^\.]*\.[^\.]*\.[^\.]*$/;
+    const regexDot = /^[^.]*\.[^.]*\.[^.]*$/;
 
     if (e.data === "." && regexDot.test(e.target.value)) {
       e.target.value = withoutCharAt(e.target.value, start - 1);
