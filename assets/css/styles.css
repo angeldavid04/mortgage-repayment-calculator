@@ -367,29 +367,7 @@ body {
   margin-block: clamp(0.25rem, 3vw, 1.5rem);
 }
 
-@media screen and (min-width: 68rem) {
-  body {
-    background-color: var(--slate100);
-    place-content: center;
-  }
-
-  /* ----- UTILITIES ------ */
-  .card {
-    max-width: 62rem;
-    flex-direction: row;
-    box-shadow: color-mix(in srgb, var(--slate900) 20%, transparent) 0px 0px
-      12px 3px;
-    border-radius: 24px;
-    overflow: hidden;
-    background-color: var(--white);
-  }
-
-  .container {
-    min-width: 50%;
-    padding-block: 2.25rem;
-    padding-inline: 2.25rem;
-  }
-
+@media screen and (min-width: 42rem) {
   /* ----- GRID AREAS ------ */
   [data-area="header"] {
     grid-area: header;
@@ -427,7 +405,32 @@ body {
     grid-template-columns: 1fr 1fr;
     column-gap: 1.25rem;
   }
+}
 
+@media screen and (min-width: 68rem) {
+  body {
+    background-color: var(--slate100);
+    place-content: center;
+  }
+
+  /* ----- UTILITIES ------ */
+  .card {
+    max-width: 62rem;
+    flex-direction: row;
+    box-shadow: color-mix(in srgb, var(--slate900) 20%, transparent) 0px 0px
+      12px 3px;
+    border-radius: 24px;
+    overflow: hidden;
+    background-color: var(--white);
+  }
+
+  .container {
+    min-width: 50%;
+    padding-block: 2.25rem;
+    padding-inline: 2.25rem;
+  }
+
+  /* ----- MORTGAGE FORM ------ */
   .mortgage-form__header {
     margin-block-end: 2rem;
   }
