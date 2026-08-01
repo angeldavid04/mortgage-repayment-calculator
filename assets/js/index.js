@@ -34,6 +34,20 @@ function showValidation($field) {
   $message.textContent = "This field is required";
 }
 
+function showResult() {
+  $description.setAttribute("data-hidden", "true");
+  $description.setAttribute("aria-hidden", "true");
+  $results.setAttribute("data-hidden", "false");
+  $results.setAttribute("aria-hidden", "false");
+}
+
+function showIndication() {
+  $description.setAttribute("data-hidden", "false");
+  $description.setAttribute("aria-hidden", "false");
+  $results.setAttribute("data-hidden", "true");
+  $results.setAttribute("aria-hidden", "true");
+}
+
 // Calculations
 function repayment(amount, term, rate) {
   const monthlyInterest = rate / 100 / 12;
@@ -128,8 +142,7 @@ function handleSubmit(e) {
   $monthly.textContent = POUND_FORMAT.format(result.monthly);
   $total.textContent = POUND_FORMAT.format(result.total);
 
-  $description.setAttribute("data-hidden", "");
-  $results.removeAttribute("data-hidden");
+  showResult();
 }
 
 const FLOAT_REGEX = /^[0-9]+(,[0-9]+)*(\.[0-9]+)?$/;
@@ -202,7 +215,6 @@ $form.addEventListener("input", (e) => {
 });
 $form.addEventListener("click", (e) => {
   if (e.target.matches("#clear")) {
-    $description.removeAttribute("data-hidden");
-    $results.setAttribute("data-hidden", "");
+    showIndication();
   }
 });
