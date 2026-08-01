@@ -225,16 +225,20 @@ $radioContainer.addEventListener("keydown", (e) => {
   const $group = e.target.closest('[data-grouped-by="type"]');
   if (!$group) return;
 
-  if (e.code === "ArrowUp" || e.code === "ArrowDown") {
+  if (e.code === "ArrowDown") {
     e.preventDefault();
-    const $previous = $group.previousElementSibling;
-    const $next = $group.nextElementSibling;
+    const $next =
+      $group.nextElementSibling || $radioContainer.firstElementChild;
+    $next.querySelector("label").focus();
 
-    if ($next) {
-      $next.querySelector("label").focus();
-    } else {
-      $previous.querySelector("label").focus();
-    }
+    return;
+  }
+
+  if (e.code === "ArrowUp") {
+    e.preventDefault();
+    const $previous =
+      $group.previousElementSibling || $radioContainer.lastElementChild;
+    $previous.querySelector("label").focus();
 
     return;
   }

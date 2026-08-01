@@ -45,8 +45,8 @@
         <span class="mortgage-form__validation" aria-live="assertive"></span>
       </div>
       <div class="mortgage-form__field" data-area="type">
-        <label for="type-repayment" class="mortgage-form__label">Mortgage Type</label>
-        <div class="mortgage-form__group">
+        <label for="type-repayment" id="type-label" class="mortgage-form__label">Mortgage Type</label>
+        <div class="mortgage-form__group" role="radiogroup" aria-labelledby="type-label">
           <div data-grouped-by="type">
             <input type="radio" name="type" value="repayment" id="type-repayment" class="mortgage-form__radio">
             <label for="type-repayment" class="mortgage-form__radio-label" tabindex="0" role="radio"
