@@ -1,3 +1,5 @@
+"use strict";
+
 // Parse & validations
 function validateNumber(value) {
   return FLOAT_REGEX.test(value);
@@ -78,7 +80,6 @@ function handleSubmit(e) {
   // Validations
   e.target.querySelectorAll(".mortgage-form__field").forEach(($field) => {
     const $input = $field.querySelector("input");
-    const $message = $field.querySelector(".mortgage-form__validation");
 
     if ($input.getAttribute("type") === "text") {
       const value = $input.value;
@@ -156,13 +157,13 @@ $form.addEventListener("input", (e) => {
 });
 $form.addEventListener("input", (e) => {
   if (e.target.matches('input[type="text"]')) {
-    // Quita espacios en blanco
+    // Remove whitespace
     if (e.data === " ") {
       e.target.value = e.target.value.trim();
       return;
     }
 
-    // Asegura que no tenga más de un punto
+    // Ensure it has no more than one point.
     const start = e.target.selectionStart;
     const regexDot = /^[^\.]*\.[^\.]*\.[^\.]*$/;
 
@@ -172,19 +173,19 @@ $form.addEventListener("input", (e) => {
       return;
     }
 
-    // Si ingresa el primer punto, no se hace nada
+    // If the first point was entered, no action is performed.
     if (e.data === ".") {
       return;
     }
 
-    // Elimina las letras y otros caracteres en cuanto se ingresan
+    // Removes letters and other characters as soon as they are entered.
     if (!FLOAT_REGEX.test(e.target.value)) {
       e.target.value = withoutCharAt(e.target.value, start - 1);
       e.target.setSelectionRange(start - 1, start - 1);
       return;
     }
 
-    // Formatea al eliminar
+    // Format upon deletion
     if (
       (e.inputType === "deleteContentBackward" ||
         e.inputType === "deleteContentForward") &&
@@ -195,7 +196,7 @@ $form.addEventListener("input", (e) => {
       return;
     }
 
-    // Formatea la entrada en tiempo de escritura
+    // Format the input at write time.
     e.target.value = NUMBER_FORMAT.format(parseNumber(e.target.value));
   }
 });
