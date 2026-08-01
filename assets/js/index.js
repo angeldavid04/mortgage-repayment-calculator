@@ -128,8 +128,8 @@ function handleSubmit(e) {
   $monthly.textContent = POUND_FORMAT.format(result.monthly);
   $total.textContent = POUND_FORMAT.format(result.total);
 
-  $description.removeAttribute("data-visible");
-  $results.setAttribute("data-visible", "");
+  $description.setAttribute("data-hidden", "");
+  $results.removeAttribute("data-hidden");
 }
 
 const FLOAT_REGEX = /^[0-9]+(,[0-9]+)*(\.[0-9]+)?$/;
@@ -202,7 +202,7 @@ $form.addEventListener("input", (e) => {
 });
 $form.addEventListener("click", (e) => {
   if (e.target.matches("#clear")) {
-    $description.setAttribute("data-visible", "");
-    $results.removeAttribute("data-visible");
+    $description.removeAttribute("data-hidden");
+    $results.setAttribute("data-hidden", "");
   }
 });
