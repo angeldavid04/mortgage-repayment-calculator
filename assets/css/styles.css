@@ -83,6 +83,7 @@ body {
 .mortgage-form {
   background-color: var(--white);
   display: grid;
+  flex: 2;
 }
 
 .mortgage-form__header {
@@ -114,7 +115,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-block-end: 1rem;
 }
 
 .mortgage-form__field-container {
@@ -247,7 +247,8 @@ body {
   gap: 0.5rem;
   padding-block: 0.75rem;
   padding-inline: 2.75rem;
-  width: 100%;
+  max-width: 100%;
+  align-self: center;
   border-radius: 24px;
   border: transparent;
   background-color: var(--lime);
@@ -291,13 +292,15 @@ body {
 /* ----- mortgage RESULTS ----- */
 .mortgage-results__description[data-hidden] {
   position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
   width: 1px;
-  margin: -1px;
+  height: 1px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   border: 0;
+  min-height: auto;
 }
 
 .mortgage-results {
@@ -332,13 +335,15 @@ body {
 
 .mortgage-results__results[data-hidden] {
   position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
   width: 1px;
-  margin: -1px;
+  height: 1px;
   padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   border: 0;
+  min-height: auto;
 }
 
 .mortgage-results__results {
@@ -411,9 +416,9 @@ body {
       "term rate"
       "type type"
       "submit submit";
-
     grid-template-columns: 1fr 1fr;
     column-gap: 1.25rem;
+    flex: 1;
   }
 }
 
@@ -435,7 +440,6 @@ body {
   }
 
   .container {
-    min-width: 50%;
     padding-block: 2.25rem;
     padding-inline: 2.25rem;
   }
