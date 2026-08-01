@@ -1,6 +1,6 @@
 "use strict";
 
-// Parse & validations
+// Validations
 function validateNumber(value) {
   return FLOAT_REGEX.test(value);
 }
