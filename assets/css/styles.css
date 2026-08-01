@@ -121,7 +121,6 @@ body {
 .mortgage-form__field-container {
   position: relative;
   max-width: 100%;
-  overflow: hidden;
   border: 1px solid var(--slate500);
   border-radius: 6px;
   overflow: hidden;
