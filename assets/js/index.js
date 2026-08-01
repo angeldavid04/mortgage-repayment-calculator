@@ -7,8 +7,13 @@ function validateRadio($field) {
   return $field.matches(":has(input:checked)");
 }
 
+// Utilities
 function parseNumber(string) {
   return Number(string.replaceAll(",", "").trim());
+}
+
+function withoutCharAt(string, index) {
+  return string.slice(0, index) + string.slice(index + 1, string.length);
 }
 
 function clearValidation($field) {
@@ -162,9 +167,7 @@ $form.addEventListener("input", (e) => {
     const regexDot = /^[^\.]*\.[^\.]*\.[^\.]*$/;
 
     if (e.data === "." && regexDot.test(e.target.value)) {
-      e.target.value =
-        e.target.value.slice(0, start - 1) +
-        e.target.value.slice(start, e.target.value.length);
+      e.target.value = withoutCharAt(e.target.value, start - 1);
       e.target.setSelectionRange(start - 1, start - 1);
       return;
     }
@@ -176,9 +179,7 @@ $form.addEventListener("input", (e) => {
 
     // Elimina las letras y otros caracteres en cuanto se ingresan
     if (!FLOAT_REGEX.test(e.target.value)) {
-      e.target.value =
-        e.target.value.slice(0, start - 1) +
-        e.target.value.slice(start, e.target.value.length);
+      e.target.value = withoutCharAt(e.target.value, start - 1);
       e.target.setSelectionRange(start - 1, start - 1);
       return;
     }
@@ -189,16 +190,13 @@ $form.addEventListener("input", (e) => {
         e.inputType === "deleteContentForward") &&
       e.target.value.length >= 1
     ) {
-      const value = e.target.value;
-
-      e.target.value = NUMBER_FORMAT.format(parseNumber(value));
+      e.target.value = NUMBER_FORMAT.format(parseNumber(e.target.value));
       e.target.setSelectionRange(start, start);
       return;
     }
 
     // Formatea la entrada en tiempo de escritura
-    const value = e.target.value;
-    e.target.value = NUMBER_FORMAT.format(parseNumber(value));
+    e.target.value = NUMBER_FORMAT.format(parseNumber(e.target.value));
   }
 });
 $form.addEventListener("click", (e) => {
