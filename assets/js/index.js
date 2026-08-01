@@ -29,7 +29,6 @@ function showValidation($field) {
 
 // Calculations
 function repayment(amount, term, rate) {
-  const payment = { monthly: 0, total: 0 };
   const monthlyInterest = rate / 100 / 12;
   const payNum = term * 12;
 
@@ -46,6 +45,19 @@ function repayment(amount, term, rate) {
   const total = monthly * payNum;
 
   // The value is rounded at the end to avoid inconsistencies in the total
+  return {
+    monthly: Number(monthly.toFixed(2)),
+    total: Number(total.toFixed(2))
+  };
+}
+
+function interestOnly(amount, term, rate) {
+  const monthlyInterest = rate / 100 / 12;
+  const payNum = term * 12;
+
+  const monthly = amount * monthlyInterest;
+  const total = monthly * payNum;
+
   return {
     monthly: Number(monthly.toFixed(2)),
     total: Number(total.toFixed(2))
@@ -99,10 +111,12 @@ function handleSubmit(e) {
       parseNumber(data.term),
       parseNumber(data.rate)
     );
-
-    console.log(result);
   } else {
-    console.log("Interest Only");
+    result = interestOnly(
+      parseNumber(data.amount),
+      parseNumber(data.term),
+      parseNumber(data.rate)
+    );
   }
 
   $monthly.textContent = POUND_FORMAT.format(result.monthly);
