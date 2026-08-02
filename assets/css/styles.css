@@ -458,6 +458,10 @@ body {
     max-width: 70%;
   }
 
+  .mortgage-form__label {
+    margin-block-end: 0.25rem;
+  }
+
   /* ----- MORTGAGE RESULTS ------ */
   .mortgage-results {
     border-end-start-radius: 64px;
