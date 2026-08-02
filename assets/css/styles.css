@@ -96,7 +96,7 @@ body {
 }
 
 .mortgage-form__title {
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 2.5rem - 1vw, 1.75rem);
 }
 
 .mortgage-form__clear {
